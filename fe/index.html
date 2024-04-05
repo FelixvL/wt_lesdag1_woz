@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function haalAlleEigenarenOp(){
+            fetch("http://127.0.0.1:5000/eigenaren/allen")
+            .then(r => r.json())
+            .then(d => toonEigenaren(d))
+        }
+        function toonEigenaren(alleEigenaren){
+            for(let x = 0; x < alleEigenaren.length; x++){
+                document.getElementById("tooneigenarendiv").innerHTML += `${alleEigenaren[x].naam} <br>`
+            }
+        }
+        function haalAlleHuizenOp(){
+            fetch("http://127.0.0.1:5000/huizen/allen")
+            .then(r => r.json())
+            .then(d => toonHuizen(d))
+        }
+        function toonHuizen(alleHuizen){
+            for(let x = 0; x < alleHuizen.length; x++){
+                document.getElementById("tooneigenarendiv").innerHTML += `${alleHuizen[x].adres} <br>`
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>WOZ Berekening</h1>
+    <button onclick="haalAlleEigenarenOp()">Toon Eigenaren</button>
+    <div id="tooneigenarendiv"></div>
+    <button onclick="haalAlleHuizenOp()">Toon Huizen</button>
+    
+</body>
+</html>
